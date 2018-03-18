@@ -1,14 +1,13 @@
 require 'json'
 require 'rest-client'
 
-counter = 0
-
 class UserClient
   attr_reader :name
 
   def initialize name
     @name = name
     @conversation = {}
+    @counter = 0
   end
 
 #  def join_game
@@ -29,7 +28,7 @@ class UserClient
   def get_hello
     response = RestClient.get 'http://protected-bastion-93597.herokuapp.com/hello', {}
     resp_hash = JSON.parse(response)
-    counter = counter + 1
+    @counter = @counter + 1
     key = counter.to_s
     @conversation[key] = resp_hash['hello']
     puts @conversation.inspect
