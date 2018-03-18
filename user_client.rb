@@ -31,7 +31,7 @@ class UserClient
     resp_hash = JSON.parse(response)
     counter = counter + 1
     key = counter.to_s
-    @conversation[:key] = resp_hash[:hello]
+    @conversation[key] = resp_hash['hello']
     puts @conversation.inspect
     puts response
   end
